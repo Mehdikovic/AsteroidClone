@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scenes/Player.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/PlayerBullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Art/PNG/playerShip2_orange.png" type="Texture" id=3]
+[ext_resource path="res://Art/PNG/Effects/shield3.png" type="Texture" id=4]
+[ext_resource path="res://Art/PNG/Effects/fire11.png" type="Texture" id=5]
+[ext_resource path="res://Art/PNG/Effects/fire14.png" type="Texture" id=6]
+[ext_resource path="res://Art/PNG/Effects/fire15.png" type="Texture" id=7]
+[ext_resource path="res://Art/Audio/laser2.wav" type="AudioStream" id=8]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 26.3509
+height = 0.57428
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 7.0
+} ]
+
+[node name="Player" type="Area2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+_bullet = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.6 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.340561, 3.40562 )
+shape = SubResource( 1 )
+
+[node name="FireRateTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="Muzzle" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Center" type="Position2D" parent="Muzzle"]
+position = Vector2( 0, -30 )
+
+[node name="Left" type="Position2D" parent="Muzzle"]
+position = Vector2( -19.7525, -14.3342 )
+
+[node name="Right" type="Position2D" parent="Muzzle"]
+position = Vector2( 21.4554, -14.3342 )
+
+[node name="Shield" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="Exhaust" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 33 )
+scale = Vector2( 1, 0.7 )
+frames = SubResource( 2 )
+playing = true
+
+[node name="Shooting" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+[connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]

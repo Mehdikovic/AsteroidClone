@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/Main.gd" type="Script" id=1]
+[ext_resource path="res://Art/Backgrounds/space-background.png" type="Texture" id=2]
+[ext_resource path="res://Art/Audio/SimpleBeat.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Art/Audio/expl1.wav" type="AudioStream" id=5]
+[ext_resource path="res://Art/Audio/expl2.wav" type="AudioStream" id=6]
+[ext_resource path="res://Art/Audio/expl3.wav" type="AudioStream" id=7]
+[ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=8]
+
+[node name="Main" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Background" type="Sprite" parent="."]
+modulate = Color( 0.113725, 0.384314, 0.368627, 1 )
+position = Vector2( 506.279, 277.391 )
+scale = Vector2( 1.5, 1.5 )
+z_index = -1
+texture = ExtResource( 2 )
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+
+[node name="Bullet" type="Node" parent="."]
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+
+[node name="AsteroidLocationSpwan" type="Node" parent="."]
+
+[node name="1" type="Position2D" parent="AsteroidLocationSpwan"]
+position = Vector2( 108, 50 )
+
+[node name="2" type="Position2D" parent="AsteroidLocationSpwan"]
+position = Vector2( 468, 50 )
+
+[node name="3" type="Position2D" parent="AsteroidLocationSpwan"]
+position = Vector2( 865, 50 )
+
+[node name="4" type="Position2D" parent="AsteroidLocationSpwan"]
+position = Vector2( 108, 312 )
+
+[node name="5" type="Position2D" parent="AsteroidLocationSpwan"]
+position = Vector2( 865, 312 )
+
+[node name="6" type="Position2D" parent="AsteroidLocationSpwan"]
+position = Vector2( 108, 526 )
+
+[node name="7" type="Position2D" parent="AsteroidLocationSpwan"]
+position = Vector2( 468, 526 )
+
+[node name="8" type="Position2D" parent="AsteroidLocationSpwan"]
+position = Vector2( 865, 526 )
+
+[node name="EnemyContainer" type="Node" parent="."]
+
+[node name="AsteroidContainer" type="Node" parent="."]
+
+[node name="ExplosionSounds" type="Node" parent="."]
+
+[node name="Explosion1" type="AudioStreamPlayer" parent="ExplosionSounds"]
+stream = ExtResource( 5 )
+
+[node name="Explosion2" type="AudioStreamPlayer" parent="ExplosionSounds"]
+stream = ExtResource( 6 )
+
+[node name="Explosion3" type="AudioStreamPlayer" parent="ExplosionSounds"]
+stream = ExtResource( 7 )
+
+[node name="HUD" parent="." instance=ExtResource( 8 )]
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+wait_time = 10.0
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_EnemySpawnTimer_timeout"]

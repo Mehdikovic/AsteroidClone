@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/enemy_torpedo.wav-17c9eca07d372aa346349afb3a140467.sample"
+
+[deps]
+
+source_file="res://Art/Audio/enemy_torpedo.wav"
+dest_files=[ "res://.import/enemy_torpedo.wav-17c9eca07d372aa346349afb3a140467.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_shieldDown.ogg-5d2d2f030f3bb286cd6ea02aa887bd1e.oggstr"
+
+[deps]
+
+source_file="res://Art/Bonus/sfx_shieldDown.ogg"
+dest_files=[ "res://.import/sfx_shieldDown.ogg-5d2d2f030f3bb286cd6ea02aa887bd1e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
