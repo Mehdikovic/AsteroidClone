@@ -1,2 +1,2 @@
 # AsteroidClone
-A famous Asteroid clone built with Godot engine
+Famous Asteroid clone built with Godot engine
